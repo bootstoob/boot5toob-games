@@ -1,0 +1,1118 @@
+:root {
+  --clr-neon: hsl(317 100% 54%);
+  --clr-bg: #000000;
+
+}
+
+#nav-logo{
+  font-family: 'Audiowide', sans-serif;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0px;
+  background-color: var(--clr-bg);
+  color: var(--clr-neon);
+}
+
+#navbar,.footer {
+  font-family: 'Kalnia', sans-serif;
+}
+
+#navbar {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.4,0,0.2,1);
+  z-index: 1000;
+  background-color: transparent;
+  
+  background-image:
+    /* El gradiente azul/transparente va primero para que esté por encima */
+    linear-gradient(
+      175deg,
+      rgb(81, 72, 249) 0%, 
+      rgba(0, 0, 0, 0) 35%, 
+      rgba(0, 0, 0, 0) 100%
+    ),
+    /* El gradiente negro/rosa va después, como capa de fondo */
+    linear-gradient(
+      55deg,
+      rgba(0, 0, 0, 0) 0%, 
+      rgba(0, 0, 0, 0) 85%, 
+      rgb(255, 0, 43) 100%
+    );
+  
+  /* Agregamos el GIF como fondo adicional */
+  position: relative;
+  overflow: hidden;
+}
+
+#navbar > * {
+  position: relative;
+  z-index: 1; 
+}
+
+/* Capa para el GIF de fondo */
+#navbar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../assets/nav/360_.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -2;
+  opacity: 0.5;
+  -webkit-mask: 
+    linear-gradient(
+      to bottom, 
+      rgba(0,0,0,1) 0%, 
+      rgba(0,0,0,0.1) 70%, 
+      rgba(0,0,0,0) 100%
+    ),
+    linear-gradient(black, black);
+  -webkit-mask-composite: source-in;
+  mask: 
+    linear-gradient(
+      to bottom, 
+      rgba(0,0,0,1) 0%, 
+      rgba(0,0,0,0.1) 70%,  
+      rgba(0,0,0,0) 100%
+    ),
+    linear-gradient(black, black);
+  mask-composite: intersect;
+  /*todo:*/
+  transform: scale(1);
+}
+
+
+.footer{
+  background-image:
+    /* El gradiente azul/transparente va primero para que esté por encima */
+    linear-gradient(
+      5deg,
+      rgb(69, 59, 255) 0%, /* Azul */
+      rgba(0, 0, 0, 0) 55%, /* Transparente para que se vea el de abajo */
+      rgba(0, 0, 0, 0) 100%  /* Transparente */
+    ),
+    /* El gradiente negro/rosa va después, como capa de fondo */
+    linear-gradient(
+      156deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 85%,
+      rgba(237, 83, 222, 1) 100%
+    );
+}
+/* Estado encogido y fijo tras scroll */
+.navbar-scrolled {
+  display: flex !important;
+  height: 10vh !important;
+  min-height: 60px !important;
+  width: 100vw !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.navbar-sup {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  gap: 1rem; /* Espacio entre elementos */
+}
+
+.navbar-scrolled .navbar-sup {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem; /* Añadir padding horizontal */
+}
+
+#nav-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: auto;
+}
+
+.navbar-scrolled #nav-logo {
+  flex-direction: row;
+  justify-content: flex-start;
+  width: auto;
+}
+
+.navbar-sup-r {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar-scrolled .navbar-sup-r {
+  width: auto;
+  justify-content: flex-end;
+}
+
+.navbar-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-marca {
+  font-size: 3rem; 
+  margin: 1%;
+  font-weight: bold;
+  background-image: url('../assets/nav/neon.gif');
+  color: rgb(0, 0, 0, 0);
+  background-size: cover;
+  background-position-y: center;
+  background-clip: text;
+  --webkit-background-clip: text;
+  --webkit-text-fill-color: transparent;
+  transition: font-size 0.4s cubic-bezier(0.4,0,0.2,1), margin 0.4s cubic-bezier(0.4,0,0.2,1);
+
+}
+
+.navbar-scrolled .navbar-marca {
+  font-size: 2rem;
+  margin: 0.2rem 0.5rem;
+}
+
+.navbar-scrolled .nav-logo {
+  display: flex;
+  flex-direction: row;
+  width: 30%; 
+}
+
+.navbar-brand img {
+  max-height: 150px; 
+  width: auto;
+}
+
+.navbar-scrolled .navbar-brand img {
+  max-height: 50px;
+  width: auto;
+}
+
+.nav-link {
+  color:#f6d151;
+  font-size: 3rem;
+  padding: 0 20px;
+}
+.navbar-scrolled .nav-pills .nav-link {
+  padding: 0.2rem 0.7rem;
+  font-size: 1rem;
+}
+
+.nav-pills .nav-link {
+  transition: font-size 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+.navbar-logo{
+  display: flex;
+  justify-content: center
+}
+
+
+.footer {
+  height: 10vh;
+}
+
+.foot-row {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.foot-row-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  margin: 1%;
+}
+
+.img-foot {
+  width: 10%;
+}
+
+.col-perfil {
+  width: 99%;
+}
+
+.foot-row-card-div-p{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top:100px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*sliders*/
+
+/*todo:*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+
+.product-description{
+  font-family: 'Satisfy', sans-serif;
+}
+
+.card {
+  background-color: #8B0000 ;
+  padding: 3%;
+  border: none;
+  margin: 3%;
+  box-shadow: 0px 0px 5px 1px rgb(255, 8, 0), 0px 0px 10px 10px rgba(255, 0, 0, 0.728);
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.demo {
+  width: 100%
+}
+
+ul {
+  list-style: none outside none;
+  padding-left: 0;
+  margin-bottom: 0
+}
+
+li {
+  display: block;
+  float: left;
+  margin-right: 6px;
+  cursor: pointer
+}
+
+img {
+  display: block;
+  height: auto;
+  width: 100%
+}
+
+.stars i {
+  color: #f6d151
+}
+
+.stars span {
+  font-size: 13px
+}
+
+hr {
+  color: #d4d4d4
+}
+
+.badge {
+  padding: 5px !important;
+  padding-bottom: 6px !important
+}
+
+.badge i {
+  font-size: 10px
+}
+
+.profile-image {
+  width: 35px
+}
+
+.comment-ratings i {
+  font-size: 13px
+}
+
+.username {
+  font-size: 12px
+}
+
+.comment-profile {
+  line-height: 17px
+}
+
+.date span {
+  font-size: 12px
+}
+
+.p-ratings i {
+  color: #f6d151;
+  font-size: 12px
+}
+
+.btn-long {
+  padding-left: 35px;
+  padding-right: 35px
+}
+
+.buttons {
+  margin-top: 15px
+}
+
+.buttons .btn {
+  height: 46px
+}
+
+.buttons .cart {
+  border-color: #ff7676;
+  color: #ff7676
+}
+
+.buttons .cart:hover {
+  background-color: #e86464 !important;
+  color: #fff
+}
+
+.buttons .buy {
+  color: #fff;
+  background-color: #ff7676;
+  border-color: #ff7676
+}
+
+.buttons .buy:focus,
+.buy:active {
+  color: #fff;
+  background-color: #ff7676;
+  border-color: #ff7676;
+  box-shadow: none
+}
+
+.buttons .buy:hover {
+  color: #fff;
+  background-color: #e86464;
+  border-color: #e86464
+}
+
+.buttons .wishlist {
+  background-color: #fff;
+  border-color: #ff7676
+}
+
+.buttons .wishlist:hover {
+  background-color: #e86464;
+  border-color: #e86464;
+  color: #fff
+}
+
+.buttons .wishlist:hover i {
+  color: #fff
+}
+
+.buttons .wishlist i {
+  color: #ff7676
+}
+
+.comment-ratings i {
+  color: #f6d151
+}
+
+.followers {
+  font-size: 9px;
+  color: #d6d4d4
+}
+
+.store-image {
+  width: 42px
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px
+}
+
+.bullet-text {
+  font-size: 12px
+}
+
+.my-color {
+  margin-top: 10px;
+  margin-bottom: 10px
+}
+
+label.radio {
+  cursor: pointer
+}
+
+label.radio input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  pointer-events: none
+}
+
+label.radio span {
+  border: 2px solid #8f37aa;
+  display: inline-block;
+  color: #8f37aa;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  text-transform: uppercase;
+  transition: 0.5s all
+}
+
+label.radio .red {
+  background-color: red;
+  border-color: red
+}
+
+label.radio .blue {
+  background-color: blue;
+  border-color: blue
+}
+
+label.radio .green {
+  background-color: green;
+  border-color: green
+}
+
+label.radio .orange {
+  background-color: orange;
+  border-color: orange
+}
+
+label.radio input:checked+span {
+  color: #fff;
+  position: relative
+}
+
+label.radio input:checked+span::before {
+  opacity: 1;
+  content: '\2713';
+  position: absolute;
+  font-size: 13px;
+  font-weight: bold;
+  left: 4px
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Estilos btn-cristalneon*/
+
+
+.btn-cristalneon {
+  font-size: 2rem;
+  position: relative;
+  margin: 3%;
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  align-items: center;
+  vertical-align: middle;
+  color: var(--clr-neon);
+  border: var(--clr-neon) 0.2em solid;
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  letter-spacing: 1px;
+
+  text-shadow: 0 0 0.125em hsl(0, 0%, 100%), 0 0 0.45em currentColor;
+  
+  transition: all 400ms ease;
+
+  background: linear-gradient(
+    -15deg,
+    rgba(255, 255, 255, 0.05),
+    rgb(150, 0, 0),
+    rgba(255, 255, 255, 0.05)
+  );
+
+
+  box-shadow:
+  inset 0 0 0.5em 0 var(--clr-neon), 0 0 1em 0 var(--clr-neon),
+  inset 0 0.125em 0.125em rgba(0, 0, 0, 0),
+    inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.2),
+    0 0 0.1em 0.25em inset rgba(255, 255, 255, 0.2),
+    0 0 0 0 rgba(255, 255, 255, 1);
+
+
+    
+}
+
+.btn-cristalneon::before {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  background: var(--clr-neon);
+  top: 120%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+
+  transform: perspective(1em) rotateX(20deg) scale(1, 0.15);
+  filter: blur(1em);
+  opacity: 0.7;
+  
+  transition: all 400ms ease; 
+}
+
+.btn-cristalneon::after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 2em 0.5em var(--clr-neon);
+  opacity: 0;
+  background-color: var(--clr-neon);
+  transition: opacity 400ms linear;
+  
+}
+
+.btn-cristalneon:hover, 
+.btn-cristalneon:focus {
+  color: var(--clr-bg);
+  text-shadow: none;
+  transform: perspective(800px) rotateX(-15deg) scale(1.2);
+
+}
+
+
+.btn-cristalneon:hover::before,
+.btn-cristalneon:focus::before {
+  opacity: 1;
+}
+
+.btn-cristalneon:hover::after,
+.btn-cristalneon:focus::after {
+  opacity: 1;
+}
+/* FIN boton btn-cristalneon*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.card-body {
+  padding: 0.3rem 0.3rem 0.2rem
+}
+
+.land-card-body {
+  background: linear-gradient(to top, rgba(249, 233, 207, 0.2), rgba(247, 247, 145, 0.2));
+  position: absolute;
+  margin-left: 5%;
+  margin-right: 5%;
+  bottom: 20%;
+  height: 50px;
+}
+
+.land-card-body-div-card-text {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 99%;
+}
+
+.div-btn-ir-a {
+  margin-top: 50px;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5%;
+  width: 90%;
+}
+
+.flex-fill {
+  width: 100%;
+}
+.img-form {
+  width: 50%;
+}
+
+.div-rrss {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-bottom: 5%;
+}
+
+.div-rrss> :first-child {
+  margin-left: -10%;
+}
+
+.rrss-img {
+  height: 50px;
+}
+
+.rrss-img>* {
+  align-items: center;
+  height: 50px;
+  margin: 20px;
+}
+
+
+
+.piramide-fila {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+}
+
+.piramide-fila-div {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  height: 15%;
+}
+
+.piramide-escalones {
+  width: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.seccion {
+  width: 100%;
+  height: 15%;
+  position: absolute;
+  transition: transform 0.3s;
+  background: linear-gradient(to top, orange, yellow);
+}
+
+.seccion:hover {
+  transform: scale(1.1);
+}
+
+.seccion:nth-child(1) {
+  top: 0%;
+  width: 20%;
+}
+
+.seccion:nth-child(2) {
+  top: 14.285%;
+  width: 30%;
+}
+
+.seccion:nth-child(3) {
+  top: 28.57%;
+  width: 40%;
+}
+
+.seccion:nth-child(4) {
+  top: 42.85%;
+  width: 50%;
+}
+
+.seccion:nth-child(5) {
+  top: 57.14%;
+  width: 60%;
+}
+
+.seccion:nth-child(6) {
+  top: 71.42%;
+  width: 70%;
+}
+
+.seccion:nth-child(7) {
+  top: 85.71%;
+  width: 80%;
+}
+
+.spinner-border {
+  height: 100px;
+  width: 100px;
+}
+
+
+.row-clasi {
+  padding: 5%;
+  width: 80%;
+}
+
+.tab-content {
+  width: 100%;
+}
+
+.contain-contac {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 0;
+}
+
+.card-contac {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+/*
+*/
+#nav-tabContent-contMensajes {
+  width: 100%;
+
+}
+
+#messages {
+  margin: 1%;
+  width: 100%;
+}
+
+.img-user-cont {
+  height: 50px;
+  margin-right: 1%;
+}
+
+.juego {
+  padding: 1%;
+}
+
+.card-entrada {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10%;
+}
+
+.card-salida {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10%;
+  align-items: end;
+}
+
+.card-body-mnsg-salida {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+/*
+.col-card-juego{
+  height: 10%;
+  display: flex;
+}
+*/
+.card-juego {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-juego-fotonombre {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+}
+
+.card-head-entrada {
+  width: 60%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.card-head-salida {
+  width: 60%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.card-body-juego {
+  display: flex;
+  justify-content: center;
+  width: 40%;
+}
+
+.div-juego-btn {
+  display: flex;
+  flex-direction: row;
+}
+
+.div-juego-btn>* {
+  margin: 1%;
+}
+
+.div-juego-btn .btn {
+  height: 50%;
+}
+
+
+.historial-juego {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+  perspective: 1000px;
+  padding: 3%;
+}
+.historial-juego-card:hover{
+  transform: rotatey(180deg);
+}
+.historial-juego div{
+  width: 100px;
+}
+.historial-juego-card{
+  position: relative;
+  width: 20%;
+  height: 100px;
+  margin: 1%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+.historial-juego-card-front, .historial-juego-card-back{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+.historial-juego-card-front{
+  color: black;
+  background-color: orange;
+  transform: rotateY(0deg);
+}
+.historial-juego-card-back{
+  color: black;
+  background-color: orangered;
+  transform: rotateY(180deg);
+}
+
+
+.nombreUsu {
+  margin: 1%;
+}
+
+
+.container-perfil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-perfil>* {
+  margin: 1%;
+}
+
+.user-ficha {
+  width: 85%;
+}
+
+.user-ficha>* {
+  width: 100%;
+  margin: 1%;
+}
+#messages{
+  width: 98%;
+}
+
+.msg-interesantes, .msg-otros, .msg-oport {
+ top: -257px;
+ position: relative;
+}
+.msg-otros {
+  top: -694px;
+}
+.msg-oport {
+  top: -1200px;
+}
+.tab-pane {
+  width: 98%;
+  margin: 1%;
+}
+
+.squelet {
+  width: auto;
+  display: flex;
+}
+
+.aptitudes {
+  width: 50%;
+}
+
+.spinner-border {
+  margin: 20%;
+}
+
+
+/*todo espaguetti |^|^|^|^|^|^|^|^|^|*/
+
+.container-sliders{
+  padding-top: 10vh;
+}
+.container-sliders-sup{
+  padding-bottom: 10vh;
+  background-image: url('../assets/backgrounds/seedream-image.jpeg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.container-sliders-bot{
+  padding-top: 25vh;
+  background-image: url('../assets/backgrounds/bckgrnd-dark-mysterious.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+/*lightSlider classes*/
+.lslide img{
+  height: 500px;  
+  object-fit: cover; 
+}
+.lightSlider-descr{
+  height: 500px;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+}
+.container-sliders-parallax {
+  position: relative; /* Added to position the pseudo-element */
+  z-index: 1;
+}
+
+.container-sliders-parallax::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+.container-fluid-sliders {
+  position: relative;
+}
+
+/*chapa pic size*/
+.lSSlideWrapper {
+  height: 400px !important;
+}
